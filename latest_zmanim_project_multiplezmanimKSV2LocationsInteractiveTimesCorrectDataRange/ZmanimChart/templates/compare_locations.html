@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Compare Zmanim</title>
+</head>
+<body>
+    <h1>Compare Zmanim</h1>
+    <form action="{% url 'compare_locations' %}" method="post">
+        {% csrf_token %}
+        <label for="locations">Locations (comma separated):</label>
+        <input type="text" id="locations" name="locations" required><br><br>
+
+        <label for="start_date">Start Date:</label>
+        <input type="date" id="start_date" name="start_date" required><br><br>
+
+        <label for="end_date">End Date:</label>
+        <input type="date" id="end_date" name="end_date" required><br><br>
+
+        <label for="zmanim_options">Zmanim Options:</label><br>
+        <input type="checkbox" id="alos" name="zmanim_options" value="alos">
+        <label for="alos">Alos</label><br>
+        <input type="checkbox" id="tzais" name="zmanim_options" value="tzais">
+        <label for="tzais">Tzais</label><br>
+        
+        <!-- Added more Zmanim options here -->
+        <input type="checkbox" id="sof_zman_krias_shma_mga" name="zmanim_options" value="sof_zman_shma_mga">
+        <label for="sof_zman_krias_shma_mga">Sof Zman Krias Shma (MGA)</label><br>
+        <input type="checkbox" id="sof_zman_krias_shma_gra" name="zmanim_options" value="sof_zman_shma_gra">
+        <label for="sof_zman_krias_shma_gra">Sof Zman Krias Shma (GRA)</label><br>        
+        <input type="checkbox" id="sunrise" name="zmanim_options" value="sunrise">
+        <label for="sunrise">Sunrise</label><br>
+        <input type="checkbox" id="sunset" name="zmanim_options" value="sunset">
+        <label for="sunset">Sunset</label><br>
+        <input type="checkbox" id="alos_72" name="zmanim_options" value="alos_72">
+        <label for="alos_72">Alos 72</label><br>
+        <input type="checkbox" id="candle_lighting" name="zmanim_options" value="candle_lighting">
+        <label for="candle_lighting">Candle Lighting</label><br>
+        <input type="checkbox" id="chatzos" name="zmanim_options" value="chatzos">
+        <label for="chatzos">Chatzos</label><br>
+        <input type="checkbox" id="mincha_gedola" name="zmanim_options" value="mincha_gedola">
+        <label for="mincha_gedola">Mincha Gedola</label><br>
+
+        <input type="submit" value="Compare">
+    </form>
+    <div>
+        {{ chart_div|safe }}
+    </div>
+</body>
+</html>
